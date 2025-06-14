@@ -43,6 +43,4 @@ nodejs-project
 - The application serves the `index.html` file located in the `public` directory.
 - The HTML file includes a script tag that loads the JavaScript module from the `static/js` directory.
 
-## License
-
-This project is licensed under the MIT License.
+.

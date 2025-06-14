@@ -1,13 +1,13 @@
 const { MongoClient } = require('mongodb');
 
-const MONGO_URI = 'mongodb://127.0.0.1:27017'; // Локальный адрес MongoDB
+const MONGO_URI = process.env.MONGODB_URI; // Используем переменную окружения
 const client = new MongoClient(MONGO_URI);
 
 async function connectToDatabase() {
     try {
         await client.connect();
         console.log('Connected to MongoDB');
-        const db = client.db('my_database'); // Название вашей базы данных
+        const db = client.db(); // Если имя базы указано в URI, можно не указывать
         return db;
     } catch (err) {
         console.error('Failed to connect to MongoDB', err);
