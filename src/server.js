@@ -63,11 +63,11 @@ process.on('unhandledRejection', (reason, promise) => {
     app.use(express.static(distPath));
 
     app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, '../public/index.html'));
+        res.sendFile(path.join(distPath, 'index.html'));
     });
 
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../public/index.html'));
+        res.sendFile(path.join(distPath, 'index.html'));
     });
 
     app.use('/api', mainRouter(db, checkJwt));
