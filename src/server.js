@@ -47,6 +47,12 @@ app.use((req, res, next) => {
 });
 
 
+app.use((err, req, res, next) => {
+    console.error('Express error:', err);
+    res.status(err.status || 500).json({ status: 'error', message: err.message });
+});
+
+
 process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception:', err);
 });
