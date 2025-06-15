@@ -72,11 +72,11 @@ process.on('unhandledRejection', (reason, promise) => {
         res.sendFile(path.join(distPath, 'index.html'));
     });
 
+    app.use('/api', mainRouter(db, checkJwt));
+
     app.get('*', (req, res) => {
         res.sendFile(path.join(distPath, 'index.html'));
     });
-
-    app.use('/api', mainRouter(db, checkJwt));
 
     app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);
